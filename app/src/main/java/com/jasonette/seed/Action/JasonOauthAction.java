@@ -77,7 +77,7 @@ public class JasonOauthAction {
 
                     String callback_uri = request_options_data.getString("oauth_callback");
 
-                    DefaultApi10a oauthApi = new DefaultApi10a() {
+                    DefaultApi10a oauthApi = new DefaultApi10a()  {
                         @Override
                         public String getRequestTokenEndpoint() {
                             return requestUri;
