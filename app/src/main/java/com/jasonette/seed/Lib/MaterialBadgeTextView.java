@@ -16,21 +16,22 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
-import androidx.core.view.ViewCompat;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.jasonette.seed.Helper.JasonHelper;
+
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by matrixxun on 2016/8/30.
  */
-public class MaterialBadgeTextView extends TextView {
+public class MaterialBadgeTextView extends AppCompatTextView {
 
     private static final int DEFAULT_FILL_TYPE = 0;
 

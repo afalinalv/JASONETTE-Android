@@ -1,15 +1,13 @@
 package com.jasonette.seed.Service.vision;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Build;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Surface;
+//import android.view.SurfaceHolder;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -21,6 +19,10 @@ import com.jasonette.seed.Core.JasonViewActivity;
 
 import org.json.JSONObject;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 
 /**
  * Created by realitix on 06/07/17.
@@ -30,7 +32,7 @@ public class JasonVisionService {
     public static int FRONT = Camera.CameraInfo.CAMERA_FACING_FRONT;
     public static int BACK = Camera.CameraInfo.CAMERA_FACING_BACK;
 
-    private Activity temp_context;
+    private AppCompatActivity temp_context;
     private SurfaceHolder temp_holder;
     private int temp_side;
 
@@ -40,7 +42,7 @@ public class JasonVisionService {
     private int side;
     public boolean is_open;
 
-    public JasonVisionService(Activity context) {
+    public JasonVisionService(AppCompatActivity context) {
         initView(context);
     }
 
@@ -52,7 +54,7 @@ public class JasonVisionService {
         return view;
     }
 
-    private void initView(final Activity context) {
+    private void initView(final AppCompatActivity context) {
         if (view != null) {
             return;
         }
@@ -143,7 +145,7 @@ public class JasonVisionService {
         });
     }
 
-    private void startCamera(final Activity context, SurfaceHolder holder, final int side) {
+    private void startCamera(final AppCompatActivity context, SurfaceHolder holder, final int side) {
         try {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -165,14 +167,14 @@ public class JasonVisionService {
         }
     }
 
-    public void startVision(Activity context) {
+    public void startVision(AppCompatActivity context) {
         openCamera(context, temp_holder, temp_side);
         temp_context = null;
         temp_holder = null;
         temp_side = -1;
     }
 
-    void openCamera(Activity context, SurfaceHolder holder, final int side) {
+    void openCamera(AppCompatActivity context, SurfaceHolder holder, final int side) {
         try {
             if (cameraSource != null) {
                 cameraSource.stop();
@@ -196,7 +198,7 @@ public class JasonVisionService {
         cameraSource.stop();
     }
 
-    private int getVerticalCameraDisplayOrientation(Activity context, int cameraId) {
+    private int getVerticalCameraDisplayOrientation(AppCompatActivity context, int cameraId) {
         Camera.CameraInfo info = new Camera.CameraInfo();
         Camera.getCameraInfo(cameraId, info);
         int rotation = context.getWindowManager().getDefaultDisplay().getRotation();

@@ -17,14 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.app.ActivityCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -41,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.bumptech.glide.Glide;
@@ -52,12 +45,12 @@ import com.jasonette.seed.Component.JasonComponentFactory;
 import com.jasonette.seed.Component.JasonImageComponent;
 import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.Launcher.Launcher;
-import com.jasonette.seed.Service.agent.JasonAgentService;
-import com.jasonette.seed.Service.vision.JasonVisionService;
 import com.jasonette.seed.Lib.JasonToolbar;
 import com.jasonette.seed.Lib.MaterialBadgeTextView;
 import com.jasonette.seed.R;
 import com.jasonette.seed.Section.ItemAdapter;
+import com.jasonette.seed.Service.agent.JasonAgentService;
+import com.jasonette.seed.Service.vision.JasonVisionService;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import org.json.JSONArray;
@@ -74,6 +67,16 @@ import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import static com.bumptech.glide.Glide.with;
 
@@ -2651,7 +2654,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     JSONObject json = header.getJSONObject("menu");
 
                     final MenuItem item = menu.add("Menu");
-                    item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                    MenuItemCompat.setShowAsAction(item, MenuItem.SHOW_AS_ACTION_ALWAYS);
 
                     // We're going to create a button.
                     json.put("type", "button");
@@ -2679,16 +2682,16 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     // Now creating the menuButton and itemview
                     FrameLayout itemView;
                     View menuButton;
-                    if(item.getActionView() == null){
+                    if(MenuItemCompat.getActionView(item) == null){
                         // Create itemView if it doesn't exist yet
                         itemView = new FrameLayout(this);
                         menuButton = JasonComponentFactory.build(null, json, null, JasonViewActivity.this);
                         JasonComponentFactory.build(menuButton, json, null, JasonViewActivity.this);
                         itemView.addView(menuButton);
-                        item.setActionView(itemView);
+                        MenuItemCompat.setActionView(item, itemView);
                     } else {
                         // Reuse the itemView if it already exists
-                        itemView = (FrameLayout)item.getActionView();
+                        itemView = (FrameLayout) MenuItemCompat.getActionView(item);
                         menuButton = itemView.getChildAt(0);
                         JasonComponentFactory.build(menuButton, json, null, JasonViewActivity.this);
                     }
