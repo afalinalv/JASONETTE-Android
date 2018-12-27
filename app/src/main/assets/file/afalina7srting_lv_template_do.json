@@ -1,0 +1,22 @@
+{
+  "$jason": {
+    "head": {
+      "title": "+7(499)340-42-13",
+      "actions": {
+        "$load":    { "type": "$render" },
+        "navigate": {"type": "$default" }
+      },
+      "templates": {
+        "body": {
+          "background": {
+            "type": "html",
+            "url": "http://www.brazuka.ru/",
+            "action": { "trigger": "navigate" }
+          }
+        }   // body
+      }   // templates
+    }   // head
+  }   // $jason
+}
+
+    

@@ -1,0 +1,51 @@
+{
+	"$jason": {
+		"head": {
+			"title": "AFALINA",
+			"actions": {
+				"$foreground": {
+					"type": "$reload"
+				}
+			}
+		},
+		"body": {
+			"header": {
+				"title": {
+					"type": "image",
+					"url": "file://icons8-add-user-male-24.png"
+
+				}
+			},
+			"background": {
+				"type": "html",
+				"url": "http://www.brazuka.ru/dance/brazilskij-zuk/",
+				"action": {
+					"$show": {
+						"trigger": "navigate"
+					}
+				}
+			},
+			"footer": {
+				"tabs": {
+					"items": [
+						{
+							"image": "file://icons8-cell-phone-filled-50.png",
+							"url": "http://www.brazuka.ru/kontakty/"
+						},
+						{
+							"image": "file://icons8-home-24.png",
+							"url": "http://www.brazuka.ru/"
+						},
+						{
+							"image": "file://icons8-place-marker-24.png",
+							"url": "http://www.brazuka.ru/kontakty/"
+						}
+					]
+				}
+			}
+		}
+	}
+}
+
+
+    

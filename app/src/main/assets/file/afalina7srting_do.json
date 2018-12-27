@@ -1,0 +1,48 @@
+{
+  "$jason": {
+    "head": {
+      "title": "AFALINA",
+      "actions": {
+        "$foreground": {
+          "type": "$reload"
+        }
+      }
+    },
+    "body": {
+      "header": {
+        "title": {
+          "type": "image",
+          "url": "https://icons8.com/icon/pack/crime/windows"
+        }
+      },
+      "background": {
+        "type": "html",
+        "url": "http://developer.alexanderklimov.ru/android/index.php",
+        "action": {
+          "trigger": "navigate"
+        }
+      },
+      "footer": {
+        "tabs": {
+          "items": [
+            {
+              "image": "https://icons8.com/icon/pack/crime/windows",
+              "url": "file://afalina.json"
+            },
+            {
+              "image": "https://icons8.com/icon/pack/crime/windows",
+              "url": "file://afalina.json"
+            },
+            {
+              "image": "https://icons8.com/icon/pack/crime/windows",
+              "url": "file://afalina.json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
+
+    

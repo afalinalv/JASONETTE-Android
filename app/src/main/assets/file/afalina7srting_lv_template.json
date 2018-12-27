@@ -1,0 +1,74 @@
+{
+ "$jason": {
+   "head": {
+     "title": "+7(499)340-42-13",
+     "description": "This is a demo for Brazuka",
+     "actions": {
+       "$load": {
+         "type": "$render"
+       },
+       "navigate": [
+         {
+           "{{#if /\\/(raspisanie|dance|kontakty|kabinet1)$/.test($jason.url) }}": {
+             "type": "$default"
+           }
+         },
+         {
+           "{{#else}}": {
+             "type": "$href",
+             "options": {
+               "url": "file://afalina.json",
+               //"url": "http://www.brazuka.ru/raspisanie",
+               "preload": {
+                 "background": "#ffffff "
+               },
+               "options": {
+                 "url": "{{$jason.url}}"
+               }
+             }
+           }
+         }
+       ]
+     },
+     "templates": {
+       "body": {
+         "header": {
+           "title": "+7(499)340-42-13",
+           "style": {
+             "background": "#000000 ",
+             "color": "#ffffff ",
+             "padding": "1"
+           }
+         },
+         "background": {
+           "type": "html",
+           "url": "{{'url' in $params ? $params.url :'http://www.brazuka.ru/'}}",
+           "action": {
+             "trigger": "navigate"
+           }
+         },
+         "footer": {
+           "tabs": {
+             "items": [
+               {
+                 "image": "file://icons8-cell-phone-filled-50.png",
+                 "url": "http://www.brazuka.ru/kontakty/"
+               },
+               {
+                 "image": "file://icons8-home-24.png",
+                 "url": "http://www.brazuka.ru/"
+               },
+               {
+                 "image": "file://icons8-place-marker-24.png",
+                 "url": "http://www.brazuka.ru/kontakty/"
+               }
+             ]
+           }
+         }
+       }
+     }
+   }
+  }
+ }
+
+    
