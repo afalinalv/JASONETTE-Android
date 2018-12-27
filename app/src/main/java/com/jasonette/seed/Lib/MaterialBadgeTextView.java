@@ -16,7 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
-import android.support.v7.widget.AppCompatTextView;
+//import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,6 +26,7 @@ import android.widget.FrameLayout;
 
 import com.jasonette.seed.Helper.JasonHelper;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.ViewCompat;
 
 /**
@@ -126,7 +127,8 @@ public class MaterialBadgeTextView extends AppCompatTextView {
             final int diameter = max - (2 * mShadowRadius);
             OvalShape oval = new OvalShadow(mShadowRadius, diameter);
             circle = new ShapeDrawable(oval);
-            ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, circle.getPaint());
+            // AA ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, circle.getPaint());
+            ViewCompat.setLayerType(this, View.LAYER_TYPE_SOFTWARE, circle.getPaint());
             circle.getPaint().setShadowLayer(mShadowRadius, shadowXOffset, shadowYOffset, KEY_SHADOW_COLOR);
             circle.getPaint().setColor(backgroundColor);
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
@@ -136,7 +138,8 @@ public class MaterialBadgeTextView extends AppCompatTextView {
             }
         } else if (text.length() > 1) {/**第二种背景是上下两边为直线的椭圆, 当文本长度大于1时 */
             SemiCircleRectDrawable sr = new SemiCircleRectDrawable();
-            ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, sr.getPaint());
+            //ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, sr.getPaint());
+            ViewCompat.setLayerType(this, View.LAYER_TYPE_SOFTWARE, sr.getPaint());
             sr.getPaint().setShadowLayer(mShadowRadius, shadowXOffset, shadowYOffset, KEY_SHADOW_COLOR);
             sr.getPaint().setColor(backgroundColor);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -215,7 +218,8 @@ public class MaterialBadgeTextView extends AppCompatTextView {
         }
         setLayoutParams(params);
         ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
-        ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, drawable.getPaint());
+        // AA ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, drawable.getPaint());
+        ViewCompat.setLayerType(this, View.LAYER_TYPE_SOFTWARE, drawable.getPaint());
         drawable.getPaint().setColor(backgroundColor);
         drawable.getPaint().setAntiAlias(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
