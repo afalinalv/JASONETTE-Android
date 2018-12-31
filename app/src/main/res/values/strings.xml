@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Jasonette</string>
-    <string name="urla">https://jasonette.github.io/Jasonpedia/hello.json</string>
+    <string name="url">https://jasonette.github.io/Jasonpedia/hello.json</string>
     <string name="urlA">file://afalina.json</string>
-    <string name="urld">file://afalinaex1.json</string>
     <string name="urlz">file://afalina7srting_lv.json</string>
     <string name="urllvt">file://afalina7srting_lv_template.json</string>
-    <string name="url">file://afalina7srting_lv_template_do.json</string>
+    <string name="urls">file://afalina7srting_lv_template_do.json</string>
+    <string name="url7">file://afalina7srting_all.json</string>
     <string name="urldo">file://afalina7srting_do.json</string>
     <string name="urlc">view/layer/dynamic.json</string>
     <string name="launch">file://preload.json</string>

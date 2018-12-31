@@ -1,0 +1,24 @@
+{
+  "$jason": {
+    "head": {
+      "title": "+7(812)405-68-68",
+      "actions": {
+        "$load":    { "type": "$render" },
+        "navigate": {"type": "$default" }
+      },
+      "templates": {
+        "body": {
+          "background": {
+            "type": "html",
+            "url": "http://popholst.ru//",
+            //"url": "http://talantiya.ru/",
+            //"url": "http://dogcamping.ru/",
+            "action": { "trigger": "navigate" }
+          }
+        }   // body
+      }   // templates
+    }   // head
+  }   // $jason
+}
+
+    

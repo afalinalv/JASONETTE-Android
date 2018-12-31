@@ -28,37 +28,76 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'com.google.firebase:firebase-messaging:17.3.4'
-    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+
+// Предназначена для быстрой отладки приложения.
+// Stetho — Вслушиваемся в работу приложения
+ // 2 - com.jasonette.seed.Launcher.DebugLauncher
     debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    debugImplementation 'com.facebook.stetho:stetho-timber:1.5.0'
-    //noinspection GradleCompatible
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
-    implementation 'com.google.android.gms:play-services-maps:16.0.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+     //   ***** com.google.android.gms:play-services ****
+// 19 - com.jasonette.seed.Component.JasonMapComponent
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'  // Google Cloud Messaging
+// 6 - com.jasonette.seed.Service.vision.JasonVisionService
+    implementation 'com.google.android.gms:play-services-vision:17.0.2'
+    // Для Firebase - Нужно регистрировать пакет Генерировать JSON Добавлять Meta в Manifest
+ // 2 - com.jasonette.seed.Action.JasonPushAction;
+ // 2-com.jasonette.seed.Service.push.JasonPushMessageService
+ // 2- com.jasonette.seed.Service.push.JasonPushRegisterService
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
+// 8 - com.jasonette.seed.Service.websocket.JasonWebsocketService
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'      //  с GSON и XML rest
+// Glide поддерживает извлечение, декодирование и отображение
+// видеосюжетов, изображений и анимированных GIF-файлов
+// 12-JasonImageComponent; 9-JasonViewActivity; 1-2-JasonToolbar; 8-ItemAdapter; 6-JasonImageHelper
+    implementation 'com.github.bumptech.glide:glide:3.7.0'   // 4.8.0
     //implementation 'com.github.bumptech.glide:glide:4.8.0'
-    //implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+
+// JavaScript-движок, двигатель V8.
+//Он был разработан для внедрения высокоэффективных JavaScript для Android
+// 15 - com.jasonette.seed.Action.JasonConvertAction;
+// 7  - seed\Core\JasonParser.java
     implementation 'com.eclipsesource.j2v8:j2v8:4.8.2@aar'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
-    implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'
-    implementation 'androidx.legacy:legacy-support-core-ui:1.0.0'
-    //implementation 'commons-lang:commons-lang:2.6'
-    implementation 'commons-lang:commons-lang:20030203.000129'
-    implementation 'com.github.scribejava:scribejava-apis:4.0.0'
-    //implementation 'com.github.scribejava:scribejava-apis:6.1.0'
-    //implementation 'com.github.scribejava:scribejava-apis:6.1.0'
+
+// Библиотека для воспроизведения поведения нижних навигационных указаний из Material Design.
+    implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'  // 2.3.3
+// simple OAuth / OAuth2 client Java lib. Configuring ScribeJava is so easy
+// 25 - com.jasonette.seed.Action.JasonOauthAction
+    implementation 'com.github.scribejava:scribejava-apis:4.0.0'  // 6.2.0
+    //implementation 'com.github.scribejava:scribejava-apis:6.2.0'  // надо правильно указать APIkey DefaultApi10a
+// Android библиотека обеспечивает простой способ управления делителя элементов RecyclerView 3-4 года
+//  2 - com.jasonette.seed.Core.JasonViewActivity
     implementation 'com.yqritc:recyclerview-flexibledivider:1.4.0'
-    implementation 'com.commonsware.cwac:cam2:0.7.4'
-    implementation 'com.github.maks:AndroidAudioRecorder:0.3.0-jasonette'
-    implementation 'com.github.florent37:singledateandtimepicker:1.0.8'
+// Библиотека для работы с камерой от s3.amazonaws.com/repo.commonsware.com
+// Съемка с использованием стороннего приложения достаточно прост,
+// используя ACTION_IMAGE_CAPTURE и ACTION_VIDEO_CAPTURE deprecate
+ // 8 -  com.jasonette.seed.Action.JasonMediaAction
+    implementation 'com.commonsware.cwac:cam2:0.7.6'
+// Fancy Audio recorder для Android. Он поддерживает WAV формат 48kHz.   adrielcafe
+// 4 - com.jasonette.seed.Action.JasonAudioAction
+    implementation 'com.github.maks:AndroidAudioRecorder:0.3.0-jasonette'  // spec versions!!!
+//SingleDateAndTimePicker
+//You can now select a date and a time with only one widget !
+// 2 - com.jasonette.seed.Action.JasonUtilAction
+    implementation 'com.github.florent37:singledateandtimepicker:2.1.2'
+//This is a logger with a small, extensible API DebugTree
+// 7 - com.jasonette.seed.Action.JasonAudioAction
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    //noinspection UseOfBundledGooglePlayServices
-    implementation 'com.google.android.gms:play-services:12.0.1'
-    implementation 'androidx.multidex:multidex:2.0.1'
+
+
+
 }
+
+
+// STANDART  Не используется
+// androidTestImplementation 'androidx.test:runner:1.1.1'
+// implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+// testImplementation 'junit:junit:4.12'
+// apply plugin: 'com.google.gms.google-services'
+
+// NOT USED implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'          // STANDART
+// NOT USED implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
+//  NOT USED implementation 'com.google.android.material:material:1.1.0-alpha02'  // STANDART FAB
+// NOT USED implementation 'androidx.multidex:multidex:2.0.1'			// >64K DEX
+//  NOT USED  implementation 'androidx.legacy:legacy-support-core-ui:1.0.0'
+// NOT USED    implementation 'org.apache.commons:commons-lang3:3.8.1'  // Apache Commons lang -Доп методы Java util
